@@ -1,0 +1,503 @@
+/* ========================================
+   III RODADA NAVIDEÑA - BOSQUES DE PANDORA
+   Colombian Christmas Theme - Diciembre 2026
+   ======================================== */
+
+/* === GOOGLE FONTS === */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap');
+
+/* === CSS VARIABLES - COLOMBIAN CHRISTMAS COLORS === */
+:root {
+    /* Main Colors */
+    --rojo-navideno: #DC2F02;
+    --rojo-oscuro: #9D0208;
+    --verde-bosque: #2D6A4F;
+    --verde-oscuro: #1B4332;
+    --dorado-festivo: #FFBA08;
+    --amarillo-colombia: #FED766;
+    --azul-colombia: #003E7E;
+
+    /* Neutrals */
+    --blanco: #FFFFFF;
+    --crema: #FFF8F0;
+    --gris-claro: #F5F5F5;
+    --texto-oscuro: #1B4332;
+
+    /* Gradients */
+    --gradient-navidad: linear-gradient(135deg, var(--rojo-navideno) 0%, var(--dorado-festivo) 100%);
+    --gradient-bosque: linear-gradient(135deg, var(--verde-bosque) 0%, var(--verde-oscuro) 100%);
+
+    /* Typography */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* === RESET & BASE STYLES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--texto-oscuro);
+    background-color: var(--crema);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* === SNOWFALL ANIMATION === */
+.snowfall {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    background: transparent;
+}
+
+/* === CHRISTMAS LIGHTS DECORATION === */
+.christmas-lights {
+    height: 30px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--rojo-navideno) 0px,
+        var(--rojo-navideno) 20px,
+        var(--dorado-festivo) 20px,
+        var(--dorado-festivo) 40px,
+        var(--verde-bosque) 40px,
+        var(--verde-bosque) 60px,
+        var(--amarillo-colombia) 60px,
+        var(--amarillo-colombia) 80px,
+        var(--azul-colombia) 80px,
+        var(--azul-colombia) 100px
+    );
+    animation: lightsMove 3s linear infinite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes lightsMove {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
+    100% { filter: brightness(1); }
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--verde-oscuro);
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+h2 {
+    font-size: 2.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--rojo-navideno);
+}
+
+h3 {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+h4 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--verde-bosque);
+}
+
+/* === CONTAINER === */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* === HEADER === */
+.showcase-header {
+    background: var(--gradient-navidad);
+    color: var(--blanco);
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.showcase-header h1 {
+    color: var(--blanco);
+    font-size: 3.5rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    animation: titleGlow 2s ease-in-out infinite;
+}
+
+.showcase-header h2 {
+    color: var(--amarillo-colombia);
+    font-size: 2rem;
+    margin-top: var(--spacing-sm);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    margin-top: var(--spacing-sm);
+    opacity: 0.9;
+}
+
+@keyframes titleGlow {
+    0%, 100% { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); }
+    50% { text-shadow: 3px 3px 20px rgba(255, 186, 8, 0.6); }
+}
+
+/* === BUTTONS === */
+.btn {
+    display: inline-block;
+    padding: 12px 32px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--rojo-navideno);
+    color: var(--blanco);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background: var(--verde-bosque);
+    color: var(--blanco);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+    background: var(--verde-oscuro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-accent {
+    background: var(--dorado-festivo);
+    color: var(--texto-oscuro);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-accent:hover {
+    background: var(--amarillo-colombia);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--rojo-navideno);
+    border: 2px solid var(--rojo-navideno);
+}
+
+.btn-outline:hover {
+    background: var(--rojo-navideno);
+    color: var(--blanco);
+}
+
+/* === SECTIONS === */
+.showcase-section {
+    background: var(--blanco);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+/* === COLOR GRID === */
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.color-card {
+    text-align: center;
+    padding: var(--spacing-sm);
+    background: var(--gris-claro);
+    border-radius: var(--radius-sm);
+}
+
+.color-sample {
+    height: 100px;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.color-card h4 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.color-card code {
+    display: block;
+    background: var(--blanco);
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin: var(--spacing-xs) 0;
+    font-size: 0.9rem;
+}
+
+.color-card p {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+}
+
+/* === TYPOGRAPHY SHOWCASE === */
+.typography-showcase {
+    margin-top: var(--spacing-md);
+}
+
+.typography-showcase h1,
+.typography-showcase h2,
+.typography-showcase h3,
+.typography-showcase h4 {
+    margin-top: var(--spacing-md);
+}
+
+/* === BUTTON SHOWCASE === */
+.button-showcase {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+/* === DAY CARDS === */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.day-card {
+    background: var(--blanco);
+    border: 3px solid var(--rojo-navideno);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.day-card::before {
+    content: '🎄';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    opacity: 0.2;
+}
+
+.day-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--dorado-festivo);
+}
+
+.day-number {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-navidad);
+    color: var(--blanco);
+    font-size: 2rem;
+    font-weight: 900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.day-title {
+    color: var(--verde-bosque);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.day-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin: var(--spacing-sm) 0;
+    font-size: 0.95rem;
+    color: var(--texto-oscuro);
+}
+
+/* === ALERTS === */
+.alert {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    margin: var(--spacing-sm) 0;
+    border-left: 4px solid;
+}
+
+.alert-info {
+    background: #E3F2FD;
+    border-color: var(--azul-colombia);
+    color: #01579B;
+}
+
+.alert-warning {
+    background: #FFF3E0;
+    border-color: #F57C00;
+    color: #E65100;
+}
+
+.alert-success {
+    background: #E8F5E9;
+    border-color: var(--verde-bosque);
+    color: var(--verde-oscuro);
+}
+
+/* === FESTIVE BORDER === */
+.festive-border {
+    border: 4px dashed var(--rojo-navideno);
+    background: linear-gradient(135deg, #FFF8F0 0%, #FFFFFF 100%);
+    position: relative;
+}
+
+.festive-border::before {
+    content: '🎅🎄⭐🎁🔔';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--crema);
+    padding: 0 var(--spacing-sm);
+    font-size: 1.5rem;
+}
+
+/* === DECORATION SHOWCASE === */
+.decoration-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    font-size: 1.2rem;
+}
+
+.decoration-showcase p {
+    background: var(--gris-claro);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    margin: 0;
+}
+
+/* === FOOTER === */
+.showcase-footer {
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.showcase-footer p {
+    margin: var(--spacing-xs) 0;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .showcase-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .showcase-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .button-showcase {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.showcase-section {
+    animation: fadeIn 0.6s ease-out;
+}
