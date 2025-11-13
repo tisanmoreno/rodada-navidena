@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Día 4 - Etapa 3: El Peñón a Villa de Leyva. III Rodada Navideña - Bosques de Pandora">
+    <title>Día 4 - El Peñón a Villa de Leyva 🚴</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="snowfall"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">🎄 Rodada Navideña</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="recomendaciones.html">Recomendaciones</a></li>
+                <li><a href="participantes.html">Participantes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header for Day -->
+    <header class="day-hero">
+        <div class="christmas-lights"></div>
+        <div class="day-hero-overlay"></div>
+        <div class="day-hero-content">
+            <div class="day-badge">Día 4 - 29 Diciembre</div>
+            <h1>Etapa 3 - La Gran Final</h1>
+            <h2>El Peñón → Villa de Leyva</h2>
+            <div class="day-hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-icon">📏</span>
+                    <span class="stat-value">~95</span>
+                    <span class="stat-label">Kilómetros</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-icon">⛰️</span>
+                    <span class="stat-value">+1,500</span>
+                    <span class="stat-label">Metros</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-icon">⏱️</span>
+                    <span class="stat-value">6-8</span>
+                    <span class="stat-label">Horas</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container day-page-container">
+
+        <!-- Navigation between days -->
+        <div class="day-navigation">
+            <a href="dia-3.html" class="btn btn-outline">← Día 3</a>
+            <a href="dia-5.html" class="btn btn-primary">Día 5 →</a>
+        </div>
+
+        <!-- Overview Section -->
+        <section class="day-overview-simple">
+            <h2>🚴 Descripción de la Etapa</h2>
+            <p class="lead">
+                ¡La etapa reina! Después del día de descanso, enfrentamos el reto más grande: la ruta más larga
+                y con más desnivel hacia la hermosa Villa de Leyva.
+            </p>
+            <p>
+                Esta es la etapa que separa a los aventureros de los épicos. Con casi 100 kilómetros y 1,500 metros
+                de ganancia de elevación, será un día exigente pero increíblemente gratificante. El paisaje se
+                transforma dramáticamente hasta llegar al altiplano boyacense.
+            </p>
+            <p>
+                Villa de Leyva, uno de los pueblos coloniales más bellos de Colombia, nos espera con su Plaza Mayor,
+                sus calles empedradas, y la satisfacción de haber completado el desafío más grande de la Rodada Navideña.
+            </p>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <h2>🗺️ Mapa de la Ruta</h2>
+            <div class="map-container">
+                <div id="route-map" class="route-map"></div>
+            </div>
+            <div class="map-controls">
+                <a href="assets/routes/etapa-3.gpx" download class="btn btn-secondary">
+                    📥 Descargar GPX
+                </a>
+                <button id="fit-map" class="btn btn-outline">
+                    🎯 Centrar Mapa
+                </button>
+            </div>
+        </section>
+
+        <!-- Elevation Profile -->
+        <section class="elevation-section">
+            <h2>📊 Perfil de Elevación</h2>
+            <div class="elevation-container">
+                <canvas id="elevation-chart"></canvas>
+            </div>
+            <div class="elevation-stats">
+                <div class="elev-stat">
+                    <span class="elev-label">Elevación Máxima</span>
+                    <span class="elev-value">~2,150 m</span>
+                </div>
+                <div class="elev-stat">
+                    <span class="elev-label">Elevación Mínima</span>
+                    <span class="elev-value">~500 m</span>
+                </div>
+                <div class="elev-stat">
+                    <span class="elev-label">Ganancia Total</span>
+                    <span class="elev-value">+1,500 m</span>
+                </div>
+                <div class="elev-stat">
+                    <span class="elev-label">Pérdida Total</span>
+                    <span class="elev-value">-850 m</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Points -->
+        <section class="waypoints-section">
+            <h2>📍 Puntos Clave del Recorrido</h2>
+            <div class="waypoints-grid">
+                <div class="waypoint-card">
+                    <div class="waypoint-icon">🏡</div>
+                    <h3>El Peñón</h3>
+                    <p class="waypoint-distance">Km 0</p>
+                    <p>Salida temprano, desayuno energético. Mentalidad fuerte para el día largo.</p>
+                </div>
+                <div class="waypoint-card">
+                    <div class="waypoint-icon">⛰️</div>
+                    <h3>Alto del Águila</h3>
+                    <p class="waypoint-distance">Km ~35</p>
+                    <p>Primer gran ascenso del día. Ritmo constante, no apresurarse.</p>
+                </div>
+                <div class="waypoint-card">
+                    <div class="waypoint-icon">🍽️</div>
+                    <h3>Punto de Almuerzo</h3>
+                    <p class="waypoint-distance">Km ~50</p>
+                    <p>Parada estratégica. Recarga completa antes del tramo final.</p>
+                </div>
+                <div class="waypoint-card">
+                    <div class="waypoint-icon">🌄</div>
+                    <h3>Entrada al Altiplano</h3>
+                    <p class="waypoint-distance">Km ~70</p>
+                    <p>Cambio de paisaje dramático. Ya hueles Villa de Leyva.</p>
+                </div>
+                <div class="waypoint-card">
+                    <div class="waypoint-icon">🏛️</div>
+                    <h3>Vista de Villa de Leyva</h3>
+                    <p class="waypoint-distance">Km ~85</p>
+                    <p>Primera vista del pueblo. El final está cerca, ¡último empujón!</p>
+                </div>
+                <div class="waypoint-card">
+                    <div class="waypoint-icon">🎯</div>
+                    <h3>Plaza Mayor</h3>
+                    <p class="waypoint-distance">Km 95</p>
+                    <p>¡Lo lograste! Una de las plazas más grandes de Sudamérica te recibe.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations -->
+        <section class="day-recommendations">
+            <h2>💡 Recomendaciones Específicas</h2>
+            <div class="recommendations-grid">
+                <div class="recommendation-card">
+                    <div class="rec-icon">💪</div>
+                    <h3>Mental & Físico</h3>
+                    <ul>
+                        <li>Día más exigente, prepárate mentalmente</li>
+                        <li>Divide la ruta en tramos manejables</li>
+                        <li>Ritmo sostenible desde el inicio</li>
+                        <li>No te compares con otros</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">💧</div>
+                    <h3>Hidratación Extra</h3>
+                    <ul>
+                        <li>Lleva 3 litros mínimo</li>
+                        <li>Hidratación cada 15-20 minutos</li>
+                        <li>Electrolitos son fundamentales</li>
+                        <li>Planea puntos de recarga</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">🍕</div>
+                    <h3>Nutrición</h3>
+                    <ul>
+                        <li>Desayuno abundante (2 horas antes)</li>
+                        <li>Snacks cada 45 minutos - 1 hora</li>
+                        <li>Almuerzo sustancioso pero digestible</li>
+                        <li>Geles o dulces para emergencias</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">⏰</div>
+                    <h3>Timing Crucial</h3>
+                    <ul>
+                        <li>Salida: 6:30 - 7:00 AM (muy temprano)</li>
+                        <li>Llegada: 2:00 - 4:00 PM</li>
+                        <li>Planea llegar con luz de día</li>
+                        <li>No salgas tarde, es mucho recorrido</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">🌡️</div>
+                    <h3>Clima Variado</h3>
+                    <ul>
+                        <li>Frío en la mañana (zona alta)</li>
+                        <li>Calor a medio día</li>
+                        <li>Capas de ropa que puedas quitar</li>
+                        <li>Villa de Leyva es fría en la tarde</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">🚴</div>
+                    <h3>Estrategia</h3>
+                    <ul>
+                        <li>Primeros 30km: calentamiento gradual</li>
+                        <li>Km 30-60: mantén ritmo constante</li>
+                        <li>Km 60-80: administra energía</li>
+                        <li>Últimos 15km: ya está, dale con todo</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <div class="alert alert-warning">
+            <strong>⚠️ Muy Importante:</strong> Esta es la etapa más larga y exigente. No subestimes el reto.
+            Sal temprano, lleva suficiente comida y agua, y escucha a tu cuerpo. No hay prisa por llegar primero,
+            la meta es que TODOS lleguemos bien.
+        </div>
+
+        <div class="alert alert-info">
+            <strong>💡 Pro Tip:</strong> El último tercio del recorrido es el más duro mentalmente. Cuando sientas
+            que ya no puedes más, recuerda por qué estás aquí: la aventura, los amigos, y la satisfacción de
+            lograrlo. ¡Tú puedes!
+        </div>
+
+        <div class="alert alert-success">
+            <strong>✅ Recompensa:</strong> Villa de Leyva es hermosa. Cuando llegues, date una ducha, ponte ropa
+            limpia, y sal a celebrar con el grupo en la Plaza Mayor. ¡Se lo merecen! 🎉
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="day-navigation bottom-nav">
+            <a href="dia-3.html" class="btn btn-outline">← Día 3 - Bosques de Pandora</a>
+            <a href="dia-5.html" class="btn btn-primary">Día 5 - Villa de Leyva a Casa Caramelito (Opcional) →</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="christmas-lights"></div>
+        <div class="footer-content">
+            <h3>🎄 III Rodada Navideña - Bosques de Pandora 🎄</h3>
+            <p>26-30 Diciembre 2026</p>
+            <p class="footer-quote">"En diciembre todos somos más hermanos"</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/snowfall.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html>

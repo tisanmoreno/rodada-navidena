@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Día 5 - Etapa 4 Opcional: Villa de Leyva a Casa Caramelito. III Rodada Navideña - Bosques de Pandora">
+    <title>Día 5 - Villa de Leyva a Casa Caramelito (Opcional) 🚴</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="snowfall"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">🎄 Rodada Navideña</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="recomendaciones.html">Recomendaciones</a></li>
+                <li><a href="participantes.html">Participantes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header for Day -->
+    <header class="day-hero" style="background: linear-gradient(135deg, #2D6A4F 0%, #003E7E 100%);">
+        <div class="christmas-lights"></div>
+        <div class="day-hero-overlay"></div>
+        <div class="day-hero-content">
+            <div class="day-badge" style="background: #FED766;">Día 5 - 30 Diciembre - OPCIONAL</div>
+            <h1>Etapa 4 - Opcional</h1>
+            <h2>Villa de Leyva → Casa Caramelito</h2>
+            <div class="day-hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-icon">📏</span>
+                    <span class="stat-value">~90</span>
+                    <span class="stat-label">Kilómetros</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-icon">⛰️</span>
+                    <span class="stat-value">+1,300</span>
+                    <span class="stat-label">Metros</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-icon">🚌</span>
+                    <span class="stat-value">O Bus</span>
+                    <span class="stat-label">Alternativa</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container day-page-container">
+
+        <!-- Navigation between days -->
+        <div class="day-navigation">
+            <a href="dia-4.html" class="btn btn-outline">← Día 4</a>
+            <a href="index.html" class="btn btn-primary">Volver al Inicio →</a>
+        </div>
+
+        <!-- Overview Section -->
+        <section class="day-overview-simple" style="border: 3px dashed #2D6A4F;">
+            <h2>🚴 Día Opcional - Tú Decides</h2>
+            <p class="lead">
+                El último día es completamente opcional. Puedes cerrar el loop completo pedaleando de regreso
+                a Casa Caramelito, o tomar transporte para un regreso más relajado.
+            </p>
+            <p>
+                Si decides pedalear, será una etapa satisfactoria que completa el círculo de la aventura.
+                Ya conoces tu cuerpo después de 3 días de ruta, así que la decisión es personal: ¿quieres
+                el badge de "loop completo" o prefieres descansar y volver cómodamente?
+            </p>
+            <p>
+                <strong>No hay presión.</strong> Ambas opciones son válidas. Lo importante es que viviste
+                la experiencia de la III Rodada Navideña - Bosques de Pandora.
+            </p>
+        </section>
+
+        <!-- Options Section -->
+        <section class="waypoints-section">
+            <h2>🎯 Tus Opciones para Hoy</h2>
+            <div class="waypoints-grid">
+                <div class="waypoint-card" style="border: 3px solid #2D6A4F;">
+                    <div class="waypoint-icon">🚴</div>
+                    <h3>Opción A: Pedalear</h3>
+                    <p class="waypoint-distance">~90 km</p>
+                    <p>
+                        <strong>Pros:</strong> Completas el loop, satisfacción total, más aventura.<br>
+                        <strong>Contras:</strong> Otro día largo en la bici, cansancio acumulado.
+                    </p>
+                </div>
+                <div class="waypoint-card" style="border: 3px solid #003E7E;">
+                    <div class="waypoint-icon">🚌</div>
+                    <h3>Opción B: Bus/Carro</h3>
+                    <p class="waypoint-distance">~2-3 horas</p>
+                    <p>
+                        <strong>Pros:</strong> Descansas, llegas fresco, más tiempo en Villa de Leyva.<br>
+                        <strong>Contras:</strong> Te pierdes el cierre del círculo pedaleando.
+                    </p>
+                </div>
+                <div class="waypoint-card" style="border: 3px solid #FFBA08;">
+                    <div class="waypoint-icon">🏨</div>
+                    <h3>Opción C: Un Día Más</h3>
+                    <p class="waypoint-distance">Relax</p>
+                    <p>
+                        <strong>Pros:</strong> Disfrutas Villa de Leyva con calma, regresas el 31.<br>
+                        <strong>Contras:</strong> Necesitas hacer arreglos de alojamiento extra.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section (for those who choose to ride) -->
+        <section class="map-section">
+            <h2>🗺️ Mapa de la Ruta (Si decides pedalear)</h2>
+            <div class="map-container">
+                <div id="route-map" class="route-map"></div>
+            </div>
+            <div class="map-controls">
+                <a href="assets/routes/etapa-4-opcional.gpx" download class="btn btn-secondary">
+                    📥 Descargar GPX
+                </a>
+                <button id="fit-map" class="btn btn-outline">
+                    🎯 Centrar Mapa
+                </button>
+            </div>
+        </section>
+
+        <!-- Elevation Profile -->
+        <section class="elevation-section">
+            <h2>📊 Perfil de Elevación</h2>
+            <div class="elevation-container">
+                <canvas id="elevation-chart"></canvas>
+            </div>
+            <div class="elevation-stats">
+                <div class="elev-stat">
+                    <span class="elev-label">Elevación Máxima</span>
+                    <span class="elev-value">~2,100 m</span>
+                </div>
+                <div class="elev-stat">
+                    <span class="elev-label">Elevación Mínima</span>
+                    <span class="elev-value">~350 m</span>
+                </div>
+                <div class="elev-stat">
+                    <span class="elev-label">Ganancia Total</span>
+                    <span class="elev-value">+1,300 m</span>
+                </div>
+                <div class="elev-stat">
+                    <span class="elev-label">Pérdida Total</span>
+                    <span class="elev-value">-2,050 m</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations for Riders -->
+        <section class="day-recommendations">
+            <h2>💡 Recomendaciones (Si Pedaleas)</h2>
+            <div class="recommendations-grid">
+                <div class="recommendation-card">
+                    <div class="rec-icon">🤔</div>
+                    <h3>Decisión</h3>
+                    <ul>
+                        <li>Evalúa cómo te sientes físicamente</li>
+                        <li>Revisa el estado de tu bicicleta</li>
+                        <li>Consulta con el grupo</li>
+                        <li>Decide la noche anterior</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">⏰</div>
+                    <h3>Timing</h3>
+                    <ul>
+                        <li>Salida: 7:00 - 8:00 AM</li>
+                        <li>Llegada: 2:00 - 4:00 PM</li>
+                        <li>Ritmo más relajado que otros días</li>
+                        <li>Ya no hay presión, disfruta</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">🎒</div>
+                    <h3>Preparación</h3>
+                    <ul>
+                        <li>Revisa bien la bici en la mañana</li>
+                        <li>Lleva lo esencial, deja lo demás</li>
+                        <li>Agua y comida suficiente</li>
+                        <li>Ten plan B (teléfono cargado)</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">💪</div>
+                    <h3>Mentalidad</h3>
+                    <ul>
+                        <li>No es una carrera, es un cierre</li>
+                        <li>Disfruta el paisaje inverso</li>
+                        <li>Celebra cada kilómetro</li>
+                        <li>Eres un guerrero navideño</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">🚌</div>
+                    <h3>Plan B</h3>
+                    <ul>
+                        <li>Si te cansas mucho, hay pueblos en el camino</li>
+                        <li>Transporte disponible si lo necesitas</li>
+                        <li>No hay vergüenza en cambiar de plan</li>
+                        <li>Lo importante es llegar bien</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">🎉</div>
+                    <h3>Celebración</h3>
+                    <ul>
+                        <li>Al llegar, celebra con el grupo completo</li>
+                        <li>Compartan fotos y anécdotas</li>
+                        <li>Ya son oficialmente Rodadores Navideños</li>
+                        <li>Planeen la próxima edición</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <div class="alert alert-info">
+            <strong>💡 Recordatorio:</strong> No importa si pedaleas o tomas bus. Completaste la Rodada Navideña.
+            Los días 1, 2, y 4 son lo que cuenta. Este día 5 es un bonus para los que quieren más.
+        </div>
+
+        <div class="alert alert-success">
+            <strong>✅ Felicitaciones:</strong> Llegaste hasta aquí, eso significa que viviste una aventura increíble.
+            Los Bosques de Pandora ya son parte de tu historia. ¡Feliz Navidad y nos vemos en la próxima edición! 🎄
+        </div>
+
+        <!-- Final Message -->
+        <section class="day-overview-simple" style="background: linear-gradient(135deg, #FFF8F0 0%, #FFE5E5 100%); text-align: center;">
+            <h2>🎄 Fin de la Aventura 🎄</h2>
+            <p class="lead">
+                <strong>III Rodada Navideña - Bosques de Pandora</strong>
+            </p>
+            <p>
+                Gracias por ser parte de esta aventura navideña. Cada kilómetro pedaleado, cada subida conquistada,
+                cada risa compartida, y cada villancico cantado quedará en nuestra memoria como una Navidad especial.
+            </p>
+            <p style="font-size: 1.2rem; margin-top: 2rem;">
+                <em>"El verdadero regalo navideño fue la aventura que vivimos juntos"</em>
+            </p>
+            <p style="margin-top: 2rem;">
+                <strong>¡Feliz Navidad, Rodadores! 🚴🎅🎄</strong>
+            </p>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="day-navigation bottom-nav">
+            <a href="dia-4.html" class="btn btn-outline">← Día 4 - El Peñón a Villa de Leyva</a>
+            <a href="index.html" class="btn btn-primary">🏠 Volver al Inicio</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="christmas-lights"></div>
+        <div class="footer-content">
+            <h3>🎄 III Rodada Navideña - Bosques de Pandora 🎄</h3>
+            <p>26-30 Diciembre 2026</p>
+            <p class="footer-quote">"En diciembre todos somos más hermanos"</p>
+            <p style="margin-top: 1rem; opacity: 0.9;">Con amor colombiano 🇨🇴</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/snowfall.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html>
