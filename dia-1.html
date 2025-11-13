@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Día 1 - Etapa 1: Casa Caramelito a Puente Nacional. III Rodada Navideña - Bosques de Pandora">
+    <title>Día 1 - Casa Caramelito a Puente Nacional 🚴</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="snowfall"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">🎄 Rodada Navideña</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="recomendaciones.html">Recomendaciones</a></li>
+                <li><a href="participantes.html">Participantes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header for Day -->
+    <header class="day-hero">
+        <div class="christmas-lights"></div>
+        <div class="day-hero-overlay"></div>
+        <div class="day-hero-content">
+            <div class="day-badge">Día 1 - 26 Diciembre</div>
+            <h1>Etapa 1</h1>
+            <h2>Casa Caramelito → Puente Nacional</h2>
+            <div class="day-hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-icon">📏</span>
+                    <span class="stat-value">~85</span>
+                    <span class="stat-label">Kilómetros</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-icon">⛰️</span>
+                    <span class="stat-value">+1,200</span>
+                    <span class="stat-label">Metros</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-icon">⏱️</span>
+                    <span class="stat-value">5-7</span>
+                    <span class="stat-label">Horas</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container day-page-container">
+
+        <!-- Navigation between days -->
+        <div class="day-navigation">
+            <a href="index.html" class="btn btn-outline">← Volver al Inicio</a>
+            <a href="dia-2.html" class="btn btn-primary">Día 2 →</a>
+        </div>
+
+        <!-- Overview Section -->
+        <section class="day-overview">
+            <div class="overview-content">
+                <h2>🚴 Descripción de la Etapa</h2>
+                <p class="lead">
+                    ¡Comenzamos la aventura! La primera etapa nos lleva desde Casa Caramelito hasta el histórico
+                    pueblo de Puente Nacional, atravesando paisajes hermosos de Santander.
+                </p>
+                <p>
+                    Esta etapa inaugural es perfecta para calentar motores y acostumbrarnos al ritmo del bikepacking.
+                    El recorrido combina tramos de asfalto con algunos sectores destapados, ofreciendo vistas
+                    espectaculares de las montañas santandereanas.
+                </p>
+                <p>
+                    Puente Nacional, nuestro destino, es un municipio con una rica historia colonial y arquitectura
+                    tradicional que nos recibirá para nuestra primera noche de descanso.
+                </p>
+            </div>
+            <div class="overview-image">
+                <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800&q=80"
+                     alt="Ciclismo en montaña Colombia"
+                     class="feature-image">
+                <p class="image-caption">Paisajes de Santander esperando ser explorados</p>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <h2>🗺️ Mapa de la Ruta</h2>
+            <div class="map-container">
+                <div id="route-map" class="route-map"></div>
+            </div>
+            <div class="map-controls">
+                <a href="assets/routes/etapa 1.gpx" download class="btn btn-secondary">
+                    📥 Descargar GPX
+                </a>
+                <button id="fit-map" class="btn btn-outline">
+                    🎯 Centrar Mapa
+                </button>
+            </div>
+        </section>
+
+        <!-- Elevation Profile -->
+        <section class="elevation-section">
+            <h2>📊 Perfil de Elevación</h2>
+            <div class="elevation-container">
+                <canvas id="elevation-chart"></canvas>
+            </div>
+            <div class="elevation-stats">
+                <div class="elev-stat">
+                    <span class="elev-label">Elevación Máxima</span>
+                    <span class="elev-value">~1,850 m</span>
+                </div>
+                <div class="elev-stat">
+                    <span class="elev-label">Elevación Mínima</span>
+                    <span class="elev-value">~400 m</span>
+                </div>
+                <div class="elev-stat">
+                    <span class="elev-label">Ganancia Total</span>
+                    <span class="elev-value">+1,200 m</span>
+                </div>
+                <div class="elev-stat">
+                    <span class="elev-label">Pérdida Total</span>
+                    <span class="elev-value">-750 m</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Points -->
+        <section class="waypoints-section">
+            <h2>📍 Puntos Clave del Recorrido</h2>
+            <div class="waypoints-grid">
+                <div class="waypoint-card">
+                    <div class="waypoint-icon">🏠</div>
+                    <h3>Casa Caramelito</h3>
+                    <p class="waypoint-distance">Km 0</p>
+                    <p>Punto de partida de nuestra aventura. Últimas revisiones de la bici y equipaje.</p>
+                </div>
+                <div class="waypoint-card">
+                    <div class="waypoint-icon">⛰️</div>
+                    <h3>Primera Subida</h3>
+                    <p class="waypoint-distance">Km ~15</p>
+                    <p>Primer desafío del día. Subida moderada para calentar las piernas.</p>
+                </div>
+                <div class="waypoint-card">
+                    <div class="waypoint-icon">☕</div>
+                    <h3>Punto de Hidratación</h3>
+                    <p class="waypoint-distance">Km ~45</p>
+                    <p>Buen momento para recargar agua y tomar un snack. Tienda disponible.</p>
+                </div>
+                <div class="waypoint-card">
+                    <div class="waypoint-icon">🏛️</div>
+                    <h3>Puente Nacional</h3>
+                    <p class="waypoint-distance">Km 85</p>
+                    <p>¡Meta del día! Pueblo histórico con arquitectura colonial para descansar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations -->
+        <section class="day-recommendations">
+            <h2>💡 Recomendaciones Específicas</h2>
+            <div class="recommendations-grid">
+                <div class="recommendation-card">
+                    <div class="rec-icon">🎒</div>
+                    <h3>Equipaje</h3>
+                    <ul>
+                        <li>Verifica el peso de tus alforjas antes de salir</li>
+                        <li>Lleva herramientas básicas y cámara de repuesto</li>
+                        <li>No olvides tu kit de primeros auxilios</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">💧</div>
+                    <h3>Hidratación</h3>
+                    <ul>
+                        <li>Lleva mínimo 2 litros de agua al inicio</li>
+                        <li>Hay puntos para rellenar en el camino</li>
+                        <li>Considera sales de rehidratación</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">🍫</div>
+                    <h3>Alimentación</h3>
+                    <ul>
+                        <li>Snacks energéticos cada 1-2 horas</li>
+                        <li>Barras, frutos secos, bananos</li>
+                        <li>Almuerzo ligero en el camino</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">⏰</div>
+                    <h3>Timing</h3>
+                    <ul>
+                        <li>Salida recomendada: 7:00 AM</li>
+                        <li>Llegada estimada: 1:00 - 3:00 PM</li>
+                        <li>Evita pedalear después del atardecer</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">🌡️</div>
+                    <h3>Clima</h3>
+                    <ul>
+                        <li>Temperaturas entre 18°C - 28°C</li>
+                        <li>Lleva bloqueador solar</li>
+                        <li>Impermeable por si llueve</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="rec-icon">🚴</div>
+                    <h3>Técnica</h3>
+                    <ul>
+                        <li>Ritmo conservador al inicio</li>
+                        <li>Usa cambios apropiados en subidas</li>
+                        <li>Cuida tus rodillas en descensos</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <div class="alert alert-warning">
+            <strong>⚠️ Importante:</strong> Los primeros kilómetros tienen tráfico vehicular. Mantén precaución
+            y usa elementos reflectivos si sales muy temprano.
+        </div>
+
+        <div class="alert alert-success">
+            <strong>✅ Tip Navideño:</strong> ¡Lleva un parlante pequeño para ir cantando villancicos en el camino!
+            El espíritu navideño nos acompaña desde el primer día 🎵
+        </div>
+
+        <!-- Gallery -->
+        <section class="day-gallery">
+            <h2>📸 Galería del Recorrido</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=600&q=80"
+                         alt="Ciclismo de montaña">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80"
+                         alt="Montañas de Colombia">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1541625247959-74e0ca2e952e?w=600&q=80"
+                         alt="Caminos rurales">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80"
+                         alt="Pueblo colonial">
+                </div>
+            </div>
+            <p class="gallery-note">
+                <em>Nota: Estas son imágenes de referencia. ¡Pronto agregaremos fotos reales de ediciones anteriores!</em>
+            </p>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="day-navigation bottom-nav">
+            <a href="index.html" class="btn btn-outline">← Volver al Inicio</a>
+            <a href="dia-2.html" class="btn btn-primary">Día 2 - Puente Nacional a El Peñón →</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="christmas-lights"></div>
+        <div class="footer-content">
+            <h3>🎄 III Rodada Navideña - Bosques de Pandora 🎄</h3>
+            <p>26-30 Diciembre 2026</p>
+            <p class="footer-quote">"En diciembre todos somos más hermanos"</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/snowfall.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html>
