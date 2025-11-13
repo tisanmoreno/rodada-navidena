@@ -1412,10 +1412,12 @@ p {
 
 .participant-image img {
     width: 100%;
-    height: 300px;
+    height: 350px;
     object-fit: cover;
+    object-position: center;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
+    display: block;
 }
 
 .participant-info h3 {
@@ -1516,7 +1518,7 @@ p {
     }
 
     .participant-image img {
-        height: 250px;
+        height: 300px;
     }
 
     .team-stats-grid {
@@ -1525,5 +1527,11 @@ p {
 
     .stat-number {
         font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .participant-image img {
+        height: 250px;
     }
 }
