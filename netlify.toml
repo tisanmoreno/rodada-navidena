@@ -1,0 +1,48 @@
+# Netlify Configuration
+# III Rodada Navideña - Bosques de Pandora
+
+[build]
+  # No build command needed - static site
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirect rules
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# Headers for better performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# GPX files
+[[headers]]
+  for = "*.gpx"
+  [headers.values]
+    Content-Type = "application/gpx+xml"
+    Cache-Control = "public, max-age=86400"
