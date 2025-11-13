@@ -1378,3 +1378,152 @@ p {
         grid-template-columns: 1fr;
     }
 }
+
+/* ========================================
+   PARTICIPANTS PAGE STYLES
+   ======================================== */
+
+.participants-section {
+    margin: var(--spacing-lg) 0;
+}
+
+.participant-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--spacing-lg);
+    background: var(--blanco);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 3px solid var(--rojo-navideno);
+    transition: all 0.3s ease;
+}
+
+.participant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--dorado-festivo);
+}
+
+.participant-image {
+    position: relative;
+}
+
+.participant-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.participant-info h3 {
+    font-size: 2rem;
+    color: var(--rojo-navideno);
+    margin-bottom: var(--spacing-xs);
+}
+
+.participant-role {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--verde-bosque);
+    margin-bottom: var(--spacing-sm);
+}
+
+.participant-bio {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+    color: var(--texto-oscuro);
+}
+
+.participant-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.participant-stats span {
+    background: var(--gris-claro);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--texto-oscuro);
+}
+
+/* Team Stats Section */
+.team-stats-section {
+    background: var(--blanco);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.team-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.stat-box {
+    background: var(--gris-claro);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    text-align: center;
+    border: 2px solid var(--rojo-navideno);
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: scale(1.05);
+    border-color: var(--dorado-festivo);
+    background: var(--blanco);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--rojo-navideno);
+    line-height: 1;
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: var(--texto-oscuro);
+    font-weight: 600;
+}
+
+/* Section intro text */
+.section-intro {
+    text-align: center;
+    font-size: 1.05rem;
+    color: var(--verde-bosque);
+    margin-bottom: var(--spacing-md);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive Participants */
+@media (max-width: 768px) {
+    .participant-card {
+        grid-template-columns: 1fr;
+    }
+
+    .participant-image img {
+        height: 250px;
+    }
+
+    .team-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+}
