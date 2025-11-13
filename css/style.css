@@ -1053,6 +1053,14 @@ p {
     box-shadow: var(--shadow-sm);
 }
 
+.day-overview-simple {
+    background: var(--blanco);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
 .overview-content {
 }
 

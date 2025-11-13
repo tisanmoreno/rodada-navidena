@@ -62,14 +62,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Load GPX file and display on map
 function loadGPX(gpxPath, map, chartElement) {
+    console.log('🗺️ Cargando GPX:', gpxPath);
+
     fetch(gpxPath)
-        .then(response => response.text())
+        .then(response => {
+            console.log('✅ GPX fetch response:', response.status);
+            if (!response.ok) {
+                throw new Error('Error al cargar GPX: ' + response.status);
+            }
+            return response.text();
+        })
         .then(gpxText => {
+            console.log('📄 GPX text loaded, length:', gpxText.length);
+
             const parser = new DOMParser();
             const gpxDoc = parser.parseFromString(gpxText, 'text/xml');
 
+            // Check for parsing errors
+            const parserError = gpxDoc.querySelector('parsererror');
+            if (parserError) {
+                throw new Error('Error parsing GPX XML');
+            }
+
             // Extract track points
             const trackPoints = gpxDoc.querySelectorAll('trkpt');
+            console.log('📍 Track points found:', trackPoints.length);
+
+            if (trackPoints.length === 0) {
+                throw new Error('No se encontraron puntos de ruta en el archivo GPX');
+            }
+
             const coordinates = [];
             const elevations = [];
             const distances = [];
@@ -93,18 +115,27 @@ function loadGPX(gpxPath, map, chartElement) {
                 distances.push(totalDistance);
             });
 
+            console.log('🚴 Route data processed:', {
+                points: coordinates.length,
+                totalDistance: totalDistance.toFixed(2) + ' km'
+            });
+
             // Draw route on map
             const routeLayer = L.polyline(coordinates, {
                 color: '#DC2F02',
                 weight: 4,
-                opacity: 0.8
+                opacity: 0.8,
+                lineJoin: 'round',
+                lineCap: 'round'
             }).addTo(map);
+
+            console.log('✅ Route drawn on map');
 
             // Store layer reference
             window.routeLayer = routeLayer;
 
             // Fit map to route
-            map.fitBounds(routeLayer.getBounds());
+            map.fitBounds(routeLayer.getBounds(), { padding: [50, 50] });
 
             // Add start marker
             if (coordinates.length > 0) {
@@ -114,7 +145,7 @@ function loadGPX(gpxPath, map, chartElement) {
                         html: '🏁',
                         iconSize: [30, 30]
                     })
-                }).addTo(map).bindPopup('Inicio');
+                }).addTo(map).bindPopup('<strong>Inicio</strong>');
 
                 // Add end marker
                 L.marker(coordinates[coordinates.length - 1], {
@@ -123,7 +154,7 @@ function loadGPX(gpxPath, map, chartElement) {
                         html: '🎯',
                         iconSize: [30, 30]
                     })
-                }).addTo(map).bindPopup('Meta');
+                }).addTo(map).bindPopup('<strong>Meta</strong>');
             }
 
             // Create elevation profile chart
@@ -132,8 +163,11 @@ function loadGPX(gpxPath, map, chartElement) {
             }
         })
         .catch(error => {
-            console.error('Error loading GPX:', error);
-            mapElement.innerHTML = '<div class="map-error">Error cargando el mapa. Por favor intenta más tarde.</div>';
+            console.error('❌ Error loading GPX:', error);
+            const mapContainer = document.querySelector('.route-map');
+            if (mapContainer) {
+                mapContainer.innerHTML = '<div class="map-error">❌ Error cargando la ruta: ' + error.message + '</div>';
+            }
         });
 }
 
