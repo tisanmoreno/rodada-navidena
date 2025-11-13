@@ -15,16 +15,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let dayNumber = 1;
 
     if (pagePath.includes('dia-1')) {
-        gpxFile = 'assets/routes/etapa 1.gpx';
+        gpxFile = 'assets/routes/etapa-1.gpx';
         dayNumber = 1;
     } else if (pagePath.includes('dia-2')) {
-        gpxFile = 'assets/routes/etapa 2.gpx';
+        gpxFile = 'assets/routes/etapa-2.gpx';
         dayNumber = 2;
     } else if (pagePath.includes('dia-4')) {
-        gpxFile = 'assets/routes/etapa 3.gpx';
+        gpxFile = 'assets/routes/etapa-3.gpx';
         dayNumber = 4;
     } else if (pagePath.includes('dia-5')) {
-        gpxFile = 'assets/routes/etapa 4 opcional.gpx';
+        gpxFile = 'assets/routes/etapa-4-opcional.gpx';
         dayNumber = 5;
     }
 
